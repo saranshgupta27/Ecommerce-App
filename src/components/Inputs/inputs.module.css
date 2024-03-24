@@ -1,0 +1,27 @@
+.codeContainer {
+  width: 46px;
+  height: 48px;
+  border: 1px solid #c1c1c1;
+  border-radius: 6px;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.checkBoxContainer > input[type="checkbox"] {
+  border-radius: 4px;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid rgba(204, 204, 204, 1);
+  appearance: none;
+  background-color: rgba(204, 204, 204, 1);
+}
+
+.checkBoxContainer > input[type="checkbox"]:checked {
+  appearance: revert;
+  accent-color: rgb(0, 0, 0);
+}
