@@ -46,10 +46,10 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
           style={{ marginBottom: "1.375rem" }}
           className="my-auto  mt-4 flex gap-5 self-stretch text-base font-semibold text-black max-md:flex-wrap"
         >
-          {categories.map((category, index) => (
-            <a href="#" key={index}>
+          {categories.map((category) => (
+            <Link href="/" key={category}>
               {category}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="mb-4 mt-2 flex justify-between gap-8">
