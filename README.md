@@ -1,29 +1,26 @@
-# Create T3 App
+# How to test pages
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Current this project is deployed [here](https://ecommerce-frontend-next-js.netlify.app/)
+The app for now has 4 screens:
 
-## What's next? How do I make an app with this?
+1) Login - Login with email and password (no database yet so api is mocked) - valid format will result into a successful login
+2) Signup - Signup with email and password (no database yet so api is mocked) - valid format will result into redirection to verify screen
+3) Verify - Verify email with OTP (no database yet so api is mocked) - OTP is 12345678 for now. Valid OTP will result into redirection to Interests screen
+4) Interests - Select interests (no database yet so api is mocked) - Selecting interests and play with the paginated mocked api
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Logout button is provided in the Navbar with some conditional elements based on the user's login status on signup page.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+No frontend design library has been used for styling for now and everything has been written manually.
+Appreciate the feedback and suggestions for improvements.
 
-## Learn More
+Future work:
+1) Add database for storing user data
+2) Add more features like forgot password, change password, etc.
+3) Add more styling and animations
+4) Convert Mock API to real API via Prisma and NestJs
+5) Add tests
+6) Make responsive for mobile devices
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
