@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import { routes } from "~/constants/routes";
 import { useAuth } from "~/utils/AuthContext";
 interface HeaderContentProps {
   categories: string[];
@@ -89,7 +90,7 @@ const Notification: React.FC = () => {
         />
         <p className="flex-auto self-stretch">
           Get 10% off on business{" "}
-          <Link href={"/signup"} className="underline">
+          <Link href={routes.SIGNUP} className="underline">
             sign up
           </Link>
         </p>

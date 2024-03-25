@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "~/components/forms/forms.module.css";
+import { routes } from "~/constants/routes";
 import { useAuth } from "~/utils/AuthContext";
 import { classNames } from "~/utils/class-name.util";
 import { fetchMockedApi } from "~/utils/fetchMockedApi";
@@ -116,7 +117,7 @@ export default function SignupForm() {
       );
       if (success && user) {
         login(user);
-        return (window.location.href = "/interests");
+        return (window.location.href = routes.INTERESTS);
       } else {
         alert(message);
       }
@@ -162,7 +163,7 @@ export default function SignupForm() {
       >
         <div className="grow text-zinc-800">Have an Account?</div>
         <Link
-          href={"/login"}
+          href={routes.LOGIN}
           className="font-medium uppercase tracking-wider text-black"
         >
           Login

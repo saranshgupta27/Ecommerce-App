@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { routes } from "~/constants/routes";
 
 export interface User {
   id: number;
@@ -35,7 +36,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
-    window.location.href = "/login";
+    window.location.href = routes.LOGIN;
   };
 
   return (

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "~/components/forms/forms.module.css";
+import { routes } from "~/constants/routes";
 import { useAuth } from "~/utils/AuthContext";
 import { classNames } from "~/utils/class-name.util";
 import { fetchMockedApi } from "~/utils/fetchMockedApi";
@@ -130,7 +131,7 @@ const LoginForm: React.FC = () => {
       <div className="mb-13 flex gap-3.5 self-center pt-12">
         <div className="text-zinc-800">{"Don't have an account?"}</div>
         <Link
-          href={"/signup"}
+          href={routes.SIGNUP}
           className="font-medium uppercase tracking-wider text-black"
         >
           Sign Up
