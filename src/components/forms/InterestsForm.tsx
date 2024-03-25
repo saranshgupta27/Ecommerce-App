@@ -29,7 +29,7 @@ const InterestsForm: React.FC = () => {
           console.error("Failed to fetch categories:", response.statusText);
         }
       } catch (error) {
-        console.error("Error fetching categories:", error.message);
+        console.error("Error fetching categories:", error);
       }
     };
 

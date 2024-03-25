@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "~/components/forms/forms.module.css";
 import { classNames } from "~/utils/class-name.util";
 import EmailVerificationInput from "../Inputs/EmailVerificationInput";
 
-const VerifyForm: React.FC = ({
-  email,
-  onVerify,
-}: {
+interface VerifyFormProps {
   email: string;
-  onVerify: () => void;
-}) => {
-  const [verificationCode, setVerificationCode] = useState<string>("");
+  onVerify: (verificationCode: number) => Promise<void>;
+}
+
+const VerifyForm = ({ email, onVerify }: VerifyFormProps) => {
+  const [verificationCode, setVerificationCode] = useState<number>();
 
   function maskEmail(email: string): string {
     const [localPart, domainPart] = email.split("@");
 
     // Get the first three characters of the local part
-    const maskedLocalPart = localPart.slice(0, 3);
+    const maskedLocalPart = localPart?.slice(0, 3);
     // Mask the remaining characters of the local part with asterisks
-    const maskedCharacters = "*".repeat(localPart.length - 3);
+    const maskedCharacters =
+      localPart?.length && "*".repeat(localPart?.length - 3);
 
     return `${maskedLocalPart}${maskedCharacters}@${domainPart}`;
   }
@@ -44,11 +44,11 @@ const VerifyForm: React.FC = ({
       </div>
 
       <EmailVerificationInput
-        onChange={(receivedCode: string) => setVerificationCode(receivedCode)}
+        onChange={(receivedCode: number) => setVerificationCode(receivedCode)}
       />
 
       <button
-        onClick={() => onVerify(verificationCode)}
+        onClick={() => onVerify(verificationCode ?? 0)}
         className="mb-15 mt-2 items-center justify-center rounded-md border border-solid border-black bg-black py-4.5 text-center font-medium uppercase tracking-wider text-white"
       >
         Verify

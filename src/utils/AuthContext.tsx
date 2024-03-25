@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { routes } from "~/constants/routes";
 
 export interface User {
@@ -7,18 +14,29 @@ export interface User {
   email: string;
 }
 
-const AuthContext = createContext<{
+interface AuthContextType {
   user: User | null;
-  setUser: React.Dispatch<React.SetStateAction<unknown>>;
+  setUser: Dispatch<SetStateAction<User | null>>;
   login: (userData: User) => void;
   logout: () => void;
-}>({
+}
+
+const AuthContext = createContext<AuthContextType>({
   user: null,
+  setUser: () => {
+    throw new Error("setUser function is not implemented");
+  },
+  login: () => {
+    throw new Error("login function is not implemented");
+  },
+  logout: () => {
+    throw new Error("logout function is not implemented");
+  },
 });
 
 export const useAuth = () => useContext(AuthContext);
 
-export const AuthProvider: React.FC = ({ children }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {

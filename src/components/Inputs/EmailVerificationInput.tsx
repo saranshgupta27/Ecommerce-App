@@ -3,10 +3,10 @@ import styles from "./inputs.module.css";
 
 function EmailVerificationInput({
   onChange,
-}: {
-  onChange: (code: string) => void;
-}) {
-  const emptyArray = Array(8).fill("") as string[];
+}: Readonly<{
+  onChange: (code: number) => void;
+}>) {
+  const emptyArray = Array(8).fill("") as (HTMLInputElement | null)[];
   const [codes, setCodes] = useState<string[]>(Array(8).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>(emptyArray);
 
@@ -92,7 +92,9 @@ function EmailVerificationInput({
     index: number,
     e: React.KeyboardEvent<HTMLInputElement>,
   ): boolean => {
-    return index === 7 && codes[index] !== "" && e.key.match(/^[0-9]$/);
+    return Boolean(
+      index === 7 && codes[index] !== "" && e?.key?.match(/^[0-9]$/),
+    );
   };
 
   const convertCodesToNumber = (): number => {
@@ -107,7 +109,7 @@ function EmailVerificationInput({
   }, []);
 
   useEffect(() => {
-    onChange(convertCodesToNumber(codes));
+    onChange(convertCodesToNumber());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [codes]);
 
@@ -118,8 +120,10 @@ function EmailVerificationInput({
         {codes.map((code, index) => (
           <input
             className={styles.codeContainer}
-            key={index}
-            ref={(el) => (inputRefs.current[index] = el)}
+            key={`${index}-${code}`}
+            ref={(el) => {
+              if (el) inputRefs.current[index] = el;
+            }}
             type="text"
             maxLength={1}
             value={code}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import styles from "~/components/forms/forms.module.css";
 import { routes } from "~/constants/routes";
-import { useAuth } from "~/utils/AuthContext";
+import { useAuth, type User } from "~/utils/AuthContext";
 import { classNames } from "~/utils/class-name.util";
 import { fetchMockedApi } from "~/utils/fetchMockedApi";
 import VerifyForm from "./VerifyForm";
@@ -83,7 +83,7 @@ export default function SignupForm() {
 
   const handleSignup = async () => {
     const { email, password, name } = formData;
-    const requestBody: LoginRequestBody = { email, password, name };
+    const requestBody = { email, password, name };
 
     try {
       const { success, message } = await fetchMockedApi(
@@ -101,9 +101,9 @@ export default function SignupForm() {
     }
   };
 
-  const onVerify = async (verificationCode: string) => {
+  const onVerify = async (verificationCode: number) => {
     const { email, name } = formData;
-    const requestBody: LoginRequestBody = {
+    const requestBody = {
       email,
       name,
       verificationCode,
@@ -116,7 +116,7 @@ export default function SignupForm() {
         requestBody,
       );
       if (success && user) {
-        login(user);
+        login(user as User);
         window.location.href = routes.INTERESTS;
         return;
       } else {

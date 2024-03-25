@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import styles from "~/components/forms/forms.module.css";
 import { routes } from "~/constants/routes";
-import { useAuth } from "~/utils/AuthContext";
+import { useAuth, type User } from "~/utils/AuthContext";
 import { classNames } from "~/utils/class-name.util";
 import { fetchMockedApi } from "~/utils/fetchMockedApi";
 
@@ -33,26 +33,25 @@ const LoginForm: React.FC = () => {
 
   const handleLogin = async () => {
     const { email, password } = formData;
-    const requestBody: LoginRequestBody = { email, password };
+    const requestBody = { email, password };
 
     try {
-      const { success, user, message } = await fetchMockedApi(
+      const { success, user } = await fetchMockedApi(
         "/api/login",
         "POST",
         requestBody,
       );
       if (success) {
-        login(user);
+        login(user as User);
       } else {
-        alert("login failed", message);
+        alert("login failed");
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length === 0) {
       return await handleLogin();

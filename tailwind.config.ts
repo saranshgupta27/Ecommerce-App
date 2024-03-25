@@ -3,7 +3,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 
 const generateSpacing = (spacer = 4) => {
   const GENERATE_UPTO = 50;
-  const values = {};
+  const values: Record<number, string> = {};
 
   for (let i = 0; i <= GENERATE_UPTO; ) {
     values[i] = `${spacer * i}px`;
@@ -16,7 +16,6 @@ const generateSpacing = (spacer = 4) => {
   return values;
 };
 
-
 export default {
   content: ["./src/**/*.tsx"],
   theme: {
@@ -25,7 +24,7 @@ export default {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
     },
-    spacing:{
+    spacing: {
       px: "1px",
       ...generateSpacing(),
     },

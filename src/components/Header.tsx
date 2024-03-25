@@ -5,7 +5,7 @@ import { routes } from "~/constants/routes";
 import { useAuth } from "~/utils/AuthContext";
 interface HeaderContentProps {
   categories: string[];
-  userName: string;
+  userName?: string;
 }
 
 const HeaderContent: React.FC<HeaderContentProps> = ({
