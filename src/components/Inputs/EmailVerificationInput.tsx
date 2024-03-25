@@ -120,7 +120,7 @@ function EmailVerificationInput({
         {codes.map((code, index) => (
           <input
             className={styles.codeContainer}
-            key={`${index}-${code}`}
+            key={`${index}`}
             ref={(el) => {
               if (el) inputRefs.current[index] = el;
             }}
