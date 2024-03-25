@@ -1,12 +1,14 @@
+import { useRouter } from "next/navigation";
 import LoginForm from "~/components/forms/LoginForm";
 import { routes } from "~/constants/routes";
 import { useAuth } from "~/utils/AuthContext";
 
 function Login() {
   const { user } = useAuth();
+  const router = useRouter();
 
   if (user) {
-    window.location.href = routes.INTERESTS;
+    router.push(routes.INTERESTS);
     return;
   }
 

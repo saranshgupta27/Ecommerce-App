@@ -117,7 +117,6 @@ export default function SignupForm() {
       );
       if (success && user) {
         login(user as User);
-        window.location.href = routes.INTERESTS;
         return;
       } else {
         alert(message);

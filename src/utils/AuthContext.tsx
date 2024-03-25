@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, {
   createContext,
   useContext,
@@ -38,23 +39,29 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    if (typeof window === "undefined") return;
+    const storedUser = window.localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser) as User);
+      void router.push(routes.INTERESTS);
+    } else {
+      void router.push(routes.LOGIN);
     }
   }, []);
 
   const login = (userData: User) => {
-    localStorage.setItem("user", JSON.stringify(userData));
+    window.localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
+    void router.push(routes.INTERESTS);
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
+    window.localStorage.removeItem("user");
     setUser(null);
-    window.location.href = routes.LOGIN;
+    void router.push(routes.LOGIN);
   };
 
   return (
