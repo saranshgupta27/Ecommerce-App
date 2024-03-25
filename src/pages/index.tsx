@@ -6,7 +6,8 @@ export default function Home() {
   const { user } = useAuth();
   useEffect(() => {
     if (user) {
-      return (window.location.href = routes.INTERESTS);
+      window.location.href = routes.INTERESTS;
+      return;
     }
     window.location.href = routes.LOGIN;
   });

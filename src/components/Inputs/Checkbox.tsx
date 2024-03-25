@@ -1,7 +1,10 @@
 import { classNames } from "~/utils/class-name.util";
 import styles from "./inputs.module.css";
 
-function Checkbox({ label, value }: { label: string; value: string }) {
+function Checkbox({
+  label,
+  value,
+}: Readonly<{ label: string; value: string }>) {
   return (
     <label
       htmlFor={label}

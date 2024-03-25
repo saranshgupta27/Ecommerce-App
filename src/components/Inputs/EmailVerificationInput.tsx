@@ -108,6 +108,7 @@ function EmailVerificationInput({
 
   useEffect(() => {
     onChange(convertCodesToNumber(codes));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [codes]);
 
   return (

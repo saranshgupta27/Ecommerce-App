@@ -1,11 +1,7 @@
 import SignupForm from "~/components/forms/SignupForm";
 
 function Signup() {
-  return (
-    <>
-      <SignupForm />
-    </>
-  );
+  return <SignupForm />;
 }
 
 export default Signup;

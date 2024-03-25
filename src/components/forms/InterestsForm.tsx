@@ -16,7 +16,6 @@ const InterestsForm: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -63,7 +62,6 @@ const InterestsForm: React.FC = () => {
             key={`${category}${index}`}
             label={category}
             value={category}
-            checked={selectedCategories.includes(category)}
           />
         ))}
       </div>

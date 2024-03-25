@@ -81,7 +81,6 @@ const Notification: React.FC = () => {
       <div className="flex items-start gap-5">
         <Image
           src="/assets/arrowLeft.svg"
-          setCurrentPage
           alt=""
           width={4}
           height={4}
@@ -96,7 +95,6 @@ const Notification: React.FC = () => {
         </p>
         <Image
           src="/assets/arrowRight.svg"
-          setCurrentPage
           alt=""
           width={4}
           height={4}

@@ -6,14 +6,11 @@ function Login() {
   const { user } = useAuth();
 
   if (user) {
-    return (window.location.href = routes.INTERESTS);
+    window.location.href = routes.INTERESTS;
+    return;
   }
 
-  return (
-    <>
-      <LoginForm />
-    </>
-  );
+  return <LoginForm />;
 }
 
 export default Login;
