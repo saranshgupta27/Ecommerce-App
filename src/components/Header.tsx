@@ -15,9 +15,9 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
   const { logout: onLogout } = useAuth();
 
   return (
-    <header className="flex w-full flex-col bg-white pt-0.5 max-md:max-w-full">
+    <header className="flex w-full flex-col bg-white pt-0.5 max-md:max-w-full" style={{paddingTop:userName?"0":"1.5rem"}}>
       {userName && (
-        <div className="flex w-full flex-col items-end justify-center bg-white px-3 py-3 text-xs text-zinc-800  max-md:px-5">
+        <div className="flex w-full flex-col items-end justify-center bg-white px-3 py-3 text-xs text-zinc-800  max-md:px-5" >
           <div className="flex gap-5 pl-3.5">
             <div className="justify-center whitespace-nowrap py-0.5">Help</div>
             <div className="justify-center py-0.5">Orders & Returns</div>
@@ -43,8 +43,7 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
           </h1>
         </Link>
         <nav
-          style={{ marginBottom: "1.375rem" }}
-          className="my-auto  mt-4 flex gap-5 self-stretch text-base font-semibold text-black max-md:flex-wrap"
+          className="my-auto py-0.5 mt-5 mb-5 flex gap-8 self-stretch text-base font-semibold text-black max-md:flex-wrap"
         >
           {categories.map((category) => (
             <Link href="/" key={category}>
@@ -77,7 +76,7 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
 
 const Notification: React.FC = () => {
   return (
-    <div className="flex w-full items-center justify-center bg-zinc-100 px-16 py-2 text-sm font-medium text-black max-md:max-w-full max-md:px-5">
+    <div className="flex w-full items-center justify-center bg-zinc-100 py-2.5 text-sm font-medium text-black max-w-full px-5">
       <div className="flex items-start gap-5">
         <Image
           src="/assets/arrowLeft.svg"
@@ -118,9 +117,9 @@ export default function Header() {
   const { user } = useAuth();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <HeaderContent categories={categories} userName={user?.name} />
-      {<Notification />}
+      <Notification />
     </div>
   );
 }
