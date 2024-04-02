@@ -73,6 +73,7 @@ const InterestsForm: React.FC = () => {
           <button
             className="text-xl"
             key={i}
+            role="button"
             onClick={() => setCurrentPage(i + 1)}
           >
             {i + 1 === currentPage ? <b>{i + 1}</b> : i + 1}

@@ -13,7 +13,7 @@ function Checkbox({
         styles.checkBoxContainer,
       )}
     >
-      <input type="checkbox" name="coding" value={value} />
+      <input type="checkbox" name="coding" value={value} aria-label={label} />
       {label}
     </label>
   );

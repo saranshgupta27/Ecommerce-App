@@ -44,10 +44,11 @@ const LoginForm: React.FC = () => {
       if (success && user) {
         login(user as User);
       } else {
-        alert("login failed");
+        setErrors({ email: "Login failed. Please try again.", password: null });
       }
     } catch (error) {
       console.log(error);
+      setErrors({ email: "An error occurred. Please try again later.", password: null });
     }
   };
 
@@ -55,7 +56,7 @@ const LoginForm: React.FC = () => {
     event.preventDefault();
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length === 0) {
-      return await handleLogin();
+      await handleLogin();
     } else {
       setErrors(validationErrors);
     }
@@ -72,25 +73,27 @@ const LoginForm: React.FC = () => {
     return errors;
   };
 
-  const renderInputField = (id: string, type: string, placeholder: string) => (
+  const renderInputField = (text: string, type: string, placeholder: string) => (
     <div className="flex flex-col gap-2">
       <label
-        htmlFor={id}
+        htmlFor={text}
         className="text-zinc-800"
         style={{ textTransform: "capitalize" }}
       >
-        {id}
+        {text}
       </label>
       <input
         type={type}
-        id={id}
-        name={id}
+        id={text}
+        name={text}
+        aria-label={text}
         placeholder={placeholder}
-        value={formData[id as keyof typeof formData]}
+        value={formData[text as keyof typeof formData]}
         onChange={handleChange}
         className="rounded-md border border-solid border-stone-300 px-3 py-2"
+        required
       />
-      {errors[id] && <span className="text-red-500">{errors[id]}</span>}
+      {errors[text] && <span className="text-red-500" role="alert">{errors[text]}</span>}
     </div>
   );
 

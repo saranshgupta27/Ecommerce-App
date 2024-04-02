@@ -127,6 +127,7 @@ function EmailVerificationInput({
             type="text"
             maxLength={1}
             value={code}
+            aria-label="Verification code"
             onChange={(e) => handleChange(index, e.target.value)}
             onPaste={(e) => handlePaste(e, index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
