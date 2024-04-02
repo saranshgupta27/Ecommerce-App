@@ -16,7 +16,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     });
   } else {
     res
-      .status(400)
+      .status(401)
       .json({ success: false, message: "Invalid email or password" });
   }
 }

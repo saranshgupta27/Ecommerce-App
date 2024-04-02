@@ -53,9 +53,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const login = (userData: User) => {
-    window.localStorage.setItem("user", JSON.stringify(userData));
-    setUser(userData);
-    void router.push(routes.INTERESTS);
+    if(typeof window !== "undefined")
+    { window.localStorage.setItem("user", JSON.stringify(userData));
+      setUser(userData);
+      void router.push(routes.INTERESTS);
+    }
   };
 
   const logout = () => {

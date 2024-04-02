@@ -41,7 +41,7 @@ const LoginForm: React.FC = () => {
         "POST",
         requestBody,
       );
-      if (success) {
+      if (success && user) {
         login(user as User);
       } else {
         alert("login failed");
@@ -51,7 +51,8 @@ const LoginForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length === 0) {
       return await handleLogin();
@@ -121,7 +122,6 @@ const LoginForm: React.FC = () => {
         <button
           type="submit"
           className="mb-7 mt-2 items-center justify-center rounded-md border border-solid border-black bg-black py-4.5 text-center font-medium uppercase tracking-wider text-white"
-          onClick={handleSubmit}
         >
           Login
         </button>

@@ -120,7 +120,7 @@ export default function Header() {
   return (
     <div className="flex flex-col">
       <HeaderContent categories={categories} userName={user?.name} />
-      {!user && <Notification />}
+      {<Notification />}
     </div>
   );
 }
